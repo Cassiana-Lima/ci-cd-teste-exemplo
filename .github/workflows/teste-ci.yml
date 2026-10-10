@@ -2,18 +2,22 @@ name: Teste CI - Cypress
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch: 
   
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write 
+
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js 
       uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version: 22
         cache: 'npm'
     - name: Instalar Dependencias    
       run: npm install
@@ -28,5 +32,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
        github_token: ${{ secrets.GITHUB_TOKEN }}
-       publish_dir: ./public   
+       publish_dir: ./allure-report
     
