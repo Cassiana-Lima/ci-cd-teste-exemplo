@@ -22,10 +22,10 @@ jobs:
       run: npx cypress run
 
     - name: Gerar relatorio Allure
-      run: npm run report:generate
+      run: npx allure generate allure-results --clean -o public
 
     - name: Publicar relatorio no Gh Pages
-      uses: peaceiris/actions-gh-pages@v4
+      uses: peaceiris/actions-gh-pages@v3
       with:
        github_token: ${{ secrets.GITHUB_TOKEN }}
        publish_dir: ./public   
