@@ -26,7 +26,7 @@ jobs:
       run: npx cypress run
 
     - name: Gerar relatorio Allure
-      run: npx allure generate allure-results --clean -o public
+      run: npx allure generate allure-results --clean -o allure-report
 
     - name: Publicar relatorio no Gh Pages
       uses: peaceiris/actions-gh-pages@v3
